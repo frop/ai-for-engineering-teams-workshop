@@ -26,7 +26,7 @@ export default function CustomerCard({ customer, onSelect }: CustomerCardProps) 
 
   return (
     <div
-      className="w-full md:w-80 rounded-lg shadow-sm border border-gray-200 bg-white p-4 cursor-pointer hover:shadow-md transition-shadow"
+      className="w-full md:w-80 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 cursor-pointer hover:shadow-md transition-shadow"
       onClick={() => onSelect(id)}
       role="button"
       tabIndex={0}
@@ -34,8 +34,8 @@ export default function CustomerCard({ customer, onSelect }: CustomerCardProps) 
         if (e.key === 'Enter' || e.key === ' ') onSelect(id);
       }}
     >
-      <div className="mb-1 text-base font-semibold text-gray-900">{name}</div>
-      <div className="mb-2 text-sm text-gray-600">{company}</div>
+      <div className="mb-1 text-base font-semibold text-gray-900 dark:text-gray-100">{name}</div>
+      <div className="mb-2 text-sm text-gray-600 dark:text-gray-400">{company}</div>
 
       <div className="flex items-center gap-2 mb-2">
         <span className={`text-sm font-medium ${healthColor}`}>
@@ -46,9 +46,9 @@ export default function CustomerCard({ customer, onSelect }: CustomerCardProps) 
 
       {hasDomains && (
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-sm text-gray-400">{primaryDomain}</span>
+          <span className="text-sm text-gray-400 dark:text-gray-500">{primaryDomain}</span>
           {extraDomainCount > 0 && (
-            <span className="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">
               +{extraDomainCount} {extraDomainCount === 1 ? 'domain' : 'domains'}
             </span>
           )}
