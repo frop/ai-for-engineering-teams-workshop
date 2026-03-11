@@ -1,3 +1,5 @@
+'use client';
+
 import { Customer } from '@/data/mock-customers';
 
 export interface CustomerCardProps {
@@ -18,7 +20,7 @@ function getHealthLabel(score: number): string {
 }
 
 export default function CustomerCard({ customer, onSelect }: CustomerCardProps) {
-  const { id, name, company, healthScore, domains } = customer;
+  const { id, name, email, company, healthScore, domains } = customer;
   const healthColor = getHealthColor(healthScore);
   const hasDomains = domains && domains.length > 0;
   const primaryDomain = hasDomains ? domains[0] : null;
@@ -34,8 +36,11 @@ export default function CustomerCard({ customer, onSelect }: CustomerCardProps) 
         if (e.key === 'Enter' || e.key === ' ') onSelect(id);
       }}
     >
-      <div className="mb-1 text-base font-semibold text-gray-900 dark:text-gray-100">{name}</div>
-      <div className="mb-2 text-sm text-gray-600 dark:text-gray-400">{company}</div>
+      <div className="mb-0.5 text-base font-semibold text-gray-900 dark:text-gray-100">{name}</div>
+      <div className="mb-0.5 text-sm text-gray-600 dark:text-gray-400">{company}</div>
+      {email && (
+        <div className="mb-2 text-xs text-gray-400 dark:text-gray-500">{email}</div>
+      )}
 
       <div className="flex items-center gap-2 mb-2">
         <span className={`text-sm font-medium ${healthColor}`}>
